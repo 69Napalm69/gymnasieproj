@@ -87,7 +87,7 @@ class Paddle:
 
 class Ball:
 
-    def __init__(self,start_speed:float,size:int,start_drives:list) -> None:
+    def __init__(self,start_speed:float,size:int,start_drives:list):
         #start position of the ball
         self.pos = [256,128]
         #how fast the balls moves
