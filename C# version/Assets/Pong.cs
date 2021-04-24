@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Pong : MonoBehaviour
 {
-
     public GameObject leftPaddle;
     public GameObject rightPaddle;
     public TextMesh leftBoard;
@@ -19,7 +18,7 @@ public class Pong : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //gets the directions the paddles are gonna move in
         float moveLeft = Input.GetAxis("Left");
         float moveRight = Input.GetAxis("Right");
 
@@ -42,18 +41,17 @@ public class Pong : MonoBehaviour
                     0 // z
                 );
         }
-       
         // moves the ball
         transform.position = transform.position + new Vector3(
                 drives[0] * BallSpeed * Time.deltaTime, // x
                 drives[1] * BallSpeed * Time.deltaTime, // y
                 0 // z
             );
-
     }
 
     void OnTriggerEnter2D(Collider2D thing)
     {
+        //the ball enters a 2D collider trigger, which can only be the scoring walls
 
         // point scoring
         if (this.transform.position.x > 0)
@@ -66,12 +64,16 @@ public class Pong : MonoBehaviour
             rightBoard.text = rightScore.ToString();
         }
 
+        //reverses the direction in the x-axis 
+        drives[0] *= -1;
+        //resets ball
         this.transform.position = new Vector3(0, 0, 0);
 
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        //the ball collides with another 2D collider, it then checks the source and bounces accordingly
 
         // paddle bounces
         if(collision.gameObject == rightPaddle || collision.gameObject == leftPaddle)
@@ -85,7 +87,5 @@ public class Pong : MonoBehaviour
             //bounce off ceiling
             drives[1] *= -1;
         }
-
     }
-
 }
