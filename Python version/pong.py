@@ -12,7 +12,7 @@ clock = pygame.time.Clock()
 running = True
     
     
-class ScoreBoard():
+class ScoreBoard:
 
     def __init__(self, side, score):
         #declares what side the scoreboard is on 
@@ -36,7 +36,7 @@ class ScoreBoard():
         screen.blit(self.board, self.position)
          
 
-class Paddle():
+class Paddle:
 
     def __init__(self, side:str, speed:int):
         #sets where the paddle is in the y axis
@@ -85,7 +85,7 @@ class Paddle():
         self.score += points
          
 
-class Ball():
+class Ball:
 
     def __init__(self,start_speed:float,size:int,start_drives:list) -> None:
         #start position of the ball
